@@ -1,0 +1,50 @@
+h1. NODE-FUNARGS "!https://secure.travis-ci.org/grimen/node-funargs.png!":http://travis-ci.org/grimen/node-funargs
+
+_(Fun)ction arguments for Node.js._
+
+h2. Installation
+
+<pre>
+  $ npm install funargs
+</pre>
+
+h2. Usage
+
+<pre>
+  var fun = require('funargs');
+
+  // A function...
+
+  function funnier_args() {
+    var args = fun(arguments); // =D
+
+    // Return some fun!
+
+    return [
+      Array.isArray(args),
+      args,
+      args.strings(),
+      args.numbers(),
+      args.objects(),
+      args.arrays(),
+      args.functions()
+    ];
+  }
+
+  // ...and a call.
+
+  funnier_args("Why", null, "must", ["arguments", "be"], 1, {hell: "of"}, "a...", function() { return "pain"; });
+</pre>
+
+
+h2. Test
+
+<pre>
+  $ npm test
+</pre>
+
+
+h2. License
+
+Released under the MIT license.
+Copyright (c) "Jonas Grimfelt":http://github.com/grimen

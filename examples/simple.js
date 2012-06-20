@@ -1,6 +1,4 @@
-
-
-// Rewuire this fun NPM module.
+// Require this fun module.
 var fun = require('../lib/funargs'); // NPM: require('funargs')
 
 var puts = console.log;
