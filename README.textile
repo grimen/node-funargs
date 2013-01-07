@@ -39,8 +39,16 @@ h2. Usage
 
 h2. Test
 
+*Suite:*
+
 <pre>
   $ npm test
+</pre>
+
+*Examples:*
+
+<pre>
+  $ npm run-script example
 </pre>
 
 

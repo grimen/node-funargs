@@ -1,5 +1,5 @@
 // Require this fun module.
-var fun = require('../lib/funargs'); // NPM: require('funargs')
+var fun = require('..'); // NPM: require('funargs')
 
 var puts = console.log;
 
@@ -32,6 +32,7 @@ function funnier_args() {
   puts("fun_arguments.objects(): ", fun_arguments.objects());
   puts("fun_arguments.arrays(): ", fun_arguments.arrays());
   puts("fun_arguments.functions(): ", fun_arguments.functions());
+  puts("fun_arguments.inspect(): ", fun_arguments.inspect());
   puts("");
 
   puts("--------------------------------");

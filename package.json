@@ -1,7 +1,7 @@
 {
   "name": "funargs",
   "description": "(Fun)ction arguments for Node.js.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repositories": [
     {
      "type": "git",
@@ -30,13 +30,14 @@
   },
   "main": "./index.js",
   "scripts": {
-    "test": "mocha ./test/*_spec.js || true"
+    "test": "make test"
   },
   "bin": {},
   "engines": {
-    "node": ">= 0.6.5"
+    "node": ">= 0.4"
   },
   "dependencies": {
+    "eyes": "latest"
   },
   "devDependencies": {
     "mocha": "latest",

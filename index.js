@@ -1,1 +1,1 @@
-exports = module.exports = require('./lib/funargs');
+exports = module.exports = require('./lib');

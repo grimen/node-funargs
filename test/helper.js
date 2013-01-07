@@ -4,11 +4,6 @@ var chai = require('chai');
 
 chai.Assertion.includeStack = true;
 
-
-var SpecHelper = {
-
+module.exports = {
   assert: chai.assert
-
 };
-
-module.exports = SpecHelper;

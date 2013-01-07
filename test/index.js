@@ -1,12 +1,72 @@
-var chai = require('chai'),
-    assert = chai.assert;
+var helper = require('./helper'),
+    assert = helper.assert;
 
-chai.Assertion.includeStack = true;
+var funargs = require('..');
+var args;
 
-var funargs = require('../lib/funargs');
+module.exports = {
 
+  'Helpers': {
+    before: function() {
+      args = funargs(arguments);
+    },
 
-var Spec = {
+    '#strings': {
+      '()': function() {
+        assert.property ( args, 'strings' );
+        assert.typeOf ( args.strings, 'function' );
+      }
+    },
+
+    '#numbers': {
+      '()': function() {
+        assert.property ( args, 'numbers' );
+        assert.typeOf ( args.numbers, 'function' );
+      }
+    },
+
+    '#arrays': {
+      '()': function() {
+        assert.property ( args, 'arrays' );
+        assert.typeOf ( args.arrays, 'function' );
+      }
+    },
+
+    '#objects': {
+      '()': function() {
+        assert.property ( args, 'objects' );
+        assert.typeOf ( args.objects, 'function' );
+      }
+    },
+
+    '#functions': {
+      '()': function() {
+        assert.property ( args, 'functions' );
+        assert.typeOf ( args.functions, 'function' );
+      }
+    },
+
+    '#functions': {
+      '()': function() {
+        assert.property ( args, 'functions' );
+        assert.typeOf ( args.functions, 'function' );
+      }
+    },
+
+    '#inspect': {
+      '()': function() {
+        assert.property ( args, 'inspect' );
+        assert.typeOf ( args.inspect, 'function' );
+      }
+    },
+
+    '#debug': {
+      '()': function() {
+        assert.property ( args, 'debug' );
+        assert.typeOf ( args.debug, 'function' );
+      }
+    }
+  },
 
   'No argument(s)': {
     'function() arguments should be and Array: []': function() {
@@ -25,22 +85,20 @@ var Spec = {
         var args = funargs(arguments);
 
         assert.typeOf ( args, 'array' );
+
         assert.deepEqual ( args, [undefined] );
 
-        assert.typeOf ( args.strings, 'function' );
         assert.deepEqual ( args.strings(), [] );
 
-        assert.typeOf ( args.numbers, 'function' );
         assert.deepEqual ( args.numbers(), [] );
 
-        assert.typeOf ( args.objects, 'function' );
         assert.deepEqual ( args.objects(), [] );
 
-        assert.typeOf ( args.arrays, 'function' );
         assert.deepEqual ( args.arrays(), [] );
 
-        assert.typeOf ( args.functions, 'function' );
         assert.deepEqual ( args.functions(), [] );
+
+        assert.deepEqual ( args.inspect(), "[ undefined ]" );
       }
 
       fun (undefined);
@@ -51,22 +109,20 @@ var Spec = {
         var args = funargs(arguments);
 
         assert.typeOf ( args, 'array' );
+
         assert.deepEqual ( args, [null] );
 
-        assert.typeOf ( args.strings, 'function' );
         assert.deepEqual ( args.strings(), [] );
 
-        assert.typeOf ( args.numbers, 'function' );
         assert.deepEqual ( args.numbers(), [] );
 
-        assert.typeOf ( args.objects, 'function' );
         assert.deepEqual ( args.objects(), [] );
 
-        assert.typeOf ( args.arrays, 'function' );
         assert.deepEqual ( args.arrays(), [] );
 
-        assert.typeOf ( args.functions, 'function' );
         assert.deepEqual ( args.functions(), [] );
+
+        assert.deepEqual ( args.inspect(), "[ null ]" );
       }
 
       fun (null);
@@ -77,22 +133,20 @@ var Spec = {
         var args = funargs(arguments);
 
         assert.typeOf ( args, 'array' );
+
         assert.deepEqual ( args, ["fun"] );
 
-        assert.typeOf ( args.strings, 'function' );
         assert.deepEqual ( args.strings(), ["fun"] );
 
-        assert.typeOf ( args.numbers, 'function' );
         assert.deepEqual ( args.numbers(), [] );
 
-        assert.typeOf ( args.objects, 'function' );
         assert.deepEqual ( args.objects(), [] );
 
-        assert.typeOf ( args.arrays, 'function' );
         assert.deepEqual ( args.arrays(), [] );
 
-        assert.typeOf ( args.functions, 'function' );
         assert.deepEqual ( args.functions(), [] );
+
+        assert.deepEqual ( args.inspect(), "[ 'fun' ]" );
       }
 
       fun ("fun");
@@ -103,22 +157,20 @@ var Spec = {
         var args = funargs(arguments);
 
         assert.typeOf ( args, 'array' );
+
         assert.deepEqual ( args, [1337] );
 
-        assert.typeOf ( args.strings, 'function' );
         assert.deepEqual ( args.strings(), [] );
 
-        assert.typeOf ( args.numbers, 'function' );
         assert.deepEqual ( args.numbers(), [1337] );
 
-        assert.typeOf ( args.objects, 'function' );
         assert.deepEqual ( args.objects(), [] );
 
-        assert.typeOf ( args.arrays, 'function' );
         assert.deepEqual ( args.arrays(), [] );
 
-        assert.typeOf ( args.functions, 'function' );
         assert.deepEqual ( args.functions(), [] );
+
+        assert.deepEqual ( args.inspect(), "[ 1337 ]" );
       }
 
       fun (1337);
@@ -129,22 +181,20 @@ var Spec = {
         var args = funargs(arguments);
 
         assert.typeOf ( args, 'array' );
+
         assert.deepEqual ( args, [{fun: "args"}] );
 
-        assert.typeOf ( args.strings, 'function' );
         assert.deepEqual ( args.strings(), [] );
 
-        assert.typeOf ( args.numbers, 'function' );
         assert.deepEqual ( args.numbers(), [] );
 
-        assert.typeOf ( args.objects, 'function' );
         assert.deepEqual ( args.objects(), [{fun: "args"}] );
 
-        assert.typeOf ( args.arrays, 'function' );
         assert.deepEqual ( args.arrays(), [] );
 
-        assert.typeOf ( args.functions, 'function' );
         assert.deepEqual ( args.functions(), [] );
+
+        assert.deepEqual ( args.inspect(), "[ { fun: 'args' } ]" );
       }
 
       fun({fun: "args"});
@@ -155,22 +205,20 @@ var Spec = {
         var args = funargs(arguments);
 
         assert.typeOf ( args, 'array' );
+
         assert.deepEqual ( args, [["fun"]] );
 
-        assert.typeOf ( args.strings, 'function' );
         assert.deepEqual ( args.strings(), [] );
 
-        assert.typeOf ( args.numbers, 'function' );
         assert.deepEqual ( args.numbers(), [] );
 
-        assert.typeOf ( args.objects, 'function' );
         assert.deepEqual ( args.objects(), [] );
 
-        assert.typeOf ( args.arrays, 'function' );
         assert.deepEqual ( args.arrays(), [["fun"]] );
 
-        assert.typeOf ( args.functions, 'function' );
         assert.deepEqual ( args.functions(), [] );
+
+        assert.deepEqual ( args.inspect(), "[ [ 'fun' ] ]" );
       }
 
       fun(["fun"]);
@@ -183,22 +231,20 @@ var Spec = {
         var args = funargs(arguments);
 
         assert.typeOf ( args, 'array' );
+
         assert.deepEqual ( args, [a] );
 
-        assert.typeOf ( args.strings, 'function' );
         assert.deepEqual ( args.strings(), [] );
 
-        assert.typeOf ( args.numbers, 'function' );
         assert.deepEqual ( args.numbers(), [] );
 
-        assert.typeOf ( args.objects, 'function' );
         assert.deepEqual ( args.objects(), [] );
 
-        assert.typeOf ( args.arrays, 'function' );
         assert.deepEqual ( args.arrays(), [] );
 
-        assert.typeOf ( args.functions, 'function' );
         assert.deepEqual ( args.functions(), [a] );
+
+        assert.deepEqual ( args.inspect(), "[ [Function] ]" );
       }
 
       fun (a);
@@ -211,22 +257,20 @@ var Spec = {
         var args = funargs(arguments);
 
         assert.typeOf ( args, 'array' );
+
         assert.deepEqual ( args, [undefined, undefined] );
 
-        assert.typeOf ( args.strings, 'function' );
         assert.deepEqual ( args.strings(), [] );
 
-        assert.typeOf ( args.numbers, 'function' );
         assert.deepEqual ( args.numbers(), [] );
 
-        assert.typeOf ( args.objects, 'function' );
         assert.deepEqual ( args.objects(), [] );
 
-        assert.typeOf ( args.arrays, 'function' );
         assert.deepEqual ( args.arrays(), [] );
 
-        assert.typeOf ( args.functions, 'function' );
         assert.deepEqual ( args.functions(), [] );
+
+        assert.deepEqual ( args.inspect(), "[ undefined, undefined ]" );
       }
 
       fun (undefined, undefined);
@@ -237,22 +281,20 @@ var Spec = {
         var args = funargs(arguments);
 
         assert.typeOf ( args, 'array' );
+
         assert.deepEqual ( args, [null, null] );
 
-        assert.typeOf ( args.strings, 'function' );
         assert.deepEqual ( args.strings(), [] );
 
-        assert.typeOf ( args.numbers, 'function' );
         assert.deepEqual ( args.numbers(), [] );
 
-        assert.typeOf ( args.objects, 'function' );
         assert.deepEqual ( args.objects(), [] );
 
-        assert.typeOf ( args.arrays, 'function' );
         assert.deepEqual ( args.arrays(), [] );
 
-        assert.typeOf ( args.functions, 'function' );
         assert.deepEqual ( args.functions(), [] );
+
+        assert.deepEqual ( args.inspect(), "[ null, null ]" );
       }
 
       fun (null, null);
@@ -263,22 +305,20 @@ var Spec = {
         var args = funargs(arguments);
 
         assert.typeOf ( args, 'array' );
+
         assert.deepEqual ( args, ["fun", "args"] );
 
-        assert.typeOf ( args.strings, 'function' );
         assert.deepEqual ( args.strings(), ["fun", "args"] );
 
-        assert.typeOf ( args.numbers, 'function' );
         assert.deepEqual ( args.numbers(), [] );
 
-        assert.typeOf ( args.objects, 'function' );
         assert.deepEqual ( args.objects(), [] );
 
-        assert.typeOf ( args.arrays, 'function' );
         assert.deepEqual ( args.arrays(), [] );
 
-        assert.typeOf ( args.functions, 'function' );
         assert.deepEqual ( args.functions(), [] );
+
+        assert.deepEqual ( args.inspect(), "[ 'fun', 'args' ]" );
       }
 
       fun ("fun", "args");
@@ -289,22 +329,20 @@ var Spec = {
         var args = funargs(arguments);
 
         assert.typeOf ( args, 'array' );
+
         assert.deepEqual ( args, [13, 37] );
 
-        assert.typeOf ( args.strings, 'function' );
         assert.deepEqual ( args.strings(), [] );
 
-        assert.typeOf ( args.numbers, 'function' );
         assert.deepEqual ( args.numbers(), [13, 37] );
 
-        assert.typeOf ( args.objects, 'function' );
         assert.deepEqual ( args.objects(), [] );
 
-        assert.typeOf ( args.arrays, 'function' );
         assert.deepEqual ( args.arrays(), [] );
 
-        assert.typeOf ( args.functions, 'function' );
         assert.deepEqual ( args.functions(), [] );
+
+        assert.deepEqual ( args.inspect(), "[ 13, 37 ]" );
       }
 
       fun (13, 37);
@@ -315,22 +353,20 @@ var Spec = {
         var args = funargs(arguments);
 
         assert.typeOf ( args, 'array' );
+
         assert.deepEqual ( args, [{fun: "args"}, {args: "fun"}] );
 
-        assert.typeOf ( args.strings, 'function' );
         assert.deepEqual ( args.strings(), [] );
 
-        assert.typeOf ( args.numbers, 'function' );
         assert.deepEqual ( args.numbers(), [] );
 
-        assert.typeOf ( args.objects, 'function' );
         assert.deepEqual ( args.objects(), [{fun: "args"}, {args: "fun"}] );
 
-        assert.typeOf ( args.arrays, 'function' );
         assert.deepEqual ( args.arrays(), [] );
 
-        assert.typeOf ( args.functions, 'function' );
         assert.deepEqual ( args.functions(), [] );
+
+        assert.deepEqual ( args.inspect(), "[ { fun: 'args' }, { args: 'fun' } ]" );
       }
 
       fun ({fun: "args"}, {args: "fun"});
@@ -341,22 +377,20 @@ var Spec = {
         var args = funargs(arguments);
 
         assert.typeOf ( args, 'array' );
+
         assert.deepEqual ( args, [["fun", "args"], ["args", "fun"]] );
 
-        assert.typeOf ( args.strings, 'function' );
         assert.deepEqual ( args.strings(), [] );
 
-        assert.typeOf ( args.numbers, 'function' );
         assert.deepEqual ( args.numbers(), [] );
 
-        assert.typeOf ( args.objects, 'function' );
         assert.deepEqual ( args.objects(), [] );
 
-        assert.typeOf ( args.arrays, 'function' );
         assert.deepEqual ( args.arrays(), [["fun", "args"], ["args", "fun"]] );
 
-        assert.typeOf ( args.functions, 'function' );
         assert.deepEqual ( args.functions(), [] );
+
+        assert.deepEqual ( args.inspect(), "[ [ 'fun', 'args' ], [ 'args', 'fun' ] ]" );
       }
 
       fun (["fun", "args"], ["args", "fun"]);
@@ -370,35 +404,24 @@ var Spec = {
         var args = funargs(arguments);
 
         assert.typeOf ( args, 'array' );
+
         assert.deepEqual ( args, [a, b] );
 
-        assert.typeOf ( args.strings, 'function' );
         assert.deepEqual ( args.strings(), [] );
 
-        assert.typeOf ( args.numbers, 'function' );
         assert.deepEqual ( args.numbers(), [] );
 
-        assert.typeOf ( args.objects, 'function' );
         assert.deepEqual ( args.objects(), [] );
 
-        assert.typeOf ( args.arrays, 'function' );
         assert.deepEqual ( args.arrays(), [] );
 
-        assert.typeOf ( args.functions, 'function' );
         assert.deepEqual ( args.functions(), [a, b] );
+
+        assert.deepEqual ( args.inspect(), "[ [Function], [Function] ]" );
       }
 
       fun (a, b);
     }
-  },
-
-  'Multiple arguments - of different kind': {
-
-    // TODO: Beef up!
-
   }
 
-
 };
-
-module.exports = Spec;
