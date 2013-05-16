@@ -86,7 +86,8 @@ module.exports = {
 
         assert.typeOf ( args, 'array' );
 
-        assert.deepEqual ( args, [undefined] );
+        // assert.deepEqual ( args, [undefined] );
+        assert.deepEqual ( args[0], undefined );
 
         assert.deepEqual ( args.strings(), [] );
 
@@ -110,7 +111,8 @@ module.exports = {
 
         assert.typeOf ( args, 'array' );
 
-        assert.deepEqual ( args, [null] );
+        // assert.deepEqual ( args, [null] );
+        assert.deepEqual ( args[0], null );
 
         assert.deepEqual ( args.strings(), [] );
 
@@ -134,7 +136,8 @@ module.exports = {
 
         assert.typeOf ( args, 'array' );
 
-        assert.deepEqual ( args, ["fun"] );
+        // assert.deepEqual ( args, ["fun"] );
+        assert.deepEqual ( args[0], "fun" );
 
         assert.deepEqual ( args.strings(), ["fun"] );
 
@@ -158,7 +161,8 @@ module.exports = {
 
         assert.typeOf ( args, 'array' );
 
-        assert.deepEqual ( args, [1337] );
+        // assert.deepEqual ( args, [1337] );
+        assert.deepEqual ( args[0], 1337 );
 
         assert.deepEqual ( args.strings(), [] );
 
@@ -182,7 +186,8 @@ module.exports = {
 
         assert.typeOf ( args, 'array' );
 
-        assert.deepEqual ( args, [{fun: "args"}] );
+        // assert.deepEqual ( args, [{fun: "args"}] );
+        assert.deepEqual ( args[0], {fun: "args"} );
 
         assert.deepEqual ( args.strings(), [] );
 
@@ -206,7 +211,7 @@ module.exports = {
 
         assert.typeOf ( args, 'array' );
 
-        assert.deepEqual ( args, [["fun"]] );
+        assert.deepEqual ( args[0], ["fun"] );
 
         assert.deepEqual ( args.strings(), [] );
 
@@ -232,7 +237,8 @@ module.exports = {
 
         assert.typeOf ( args, 'array' );
 
-        assert.deepEqual ( args, [a] );
+        // assert.deepEqual ( args, [a] );
+        assert.deepEqual ( args[0], a );
 
         assert.deepEqual ( args.strings(), [] );
 
@@ -258,7 +264,9 @@ module.exports = {
 
         assert.typeOf ( args, 'array' );
 
-        assert.deepEqual ( args, [undefined, undefined] );
+        // assert.deepEqual ( args, [undefined, undefined] );
+        assert.deepEqual ( args[0], undefined );
+        assert.deepEqual ( args[1], undefined );
 
         assert.deepEqual ( args.strings(), [] );
 
@@ -282,7 +290,9 @@ module.exports = {
 
         assert.typeOf ( args, 'array' );
 
-        assert.deepEqual ( args, [null, null] );
+        // assert.deepEqual ( args, [null, null] );
+        assert.deepEqual ( args[0], null );
+        assert.deepEqual ( args[1], null );
 
         assert.deepEqual ( args.strings(), [] );
 
@@ -306,7 +316,9 @@ module.exports = {
 
         assert.typeOf ( args, 'array' );
 
-        assert.deepEqual ( args, ["fun", "args"] );
+        // assert.deepEqual ( args, ["fun", "args"] );
+        assert.deepEqual ( args[0], "fun" );
+        assert.deepEqual ( args[1], "args" );
 
         assert.deepEqual ( args.strings(), ["fun", "args"] );
 
@@ -330,7 +342,9 @@ module.exports = {
 
         assert.typeOf ( args, 'array' );
 
-        assert.deepEqual ( args, [13, 37] );
+        // assert.deepEqual ( args, [13, 37] );
+        assert.deepEqual ( args[0], 13 );
+        assert.deepEqual ( args[1], 37 );
 
         assert.deepEqual ( args.strings(), [] );
 
@@ -354,7 +368,9 @@ module.exports = {
 
         assert.typeOf ( args, 'array' );
 
-        assert.deepEqual ( args, [{fun: "args"}, {args: "fun"}] );
+        // assert.deepEqual ( args, [{fun: "args"}, {args: "fun"}] );
+        assert.deepEqual ( args[0], {fun: "args"} );
+        assert.deepEqual ( args[1], {args: "fun"} );
 
         assert.deepEqual ( args.strings(), [] );
 
@@ -378,7 +394,9 @@ module.exports = {
 
         assert.typeOf ( args, 'array' );
 
-        assert.deepEqual ( args, [["fun", "args"], ["args", "fun"]] );
+        // assert.deepEqual ( args, [["fun", "args"], ["args", "fun"]] );
+        assert.deepEqual ( args[0], ["fun", "args"] );
+        assert.deepEqual ( args[1], ["args", "fun"] );
 
         assert.deepEqual ( args.strings(), [] );
 
@@ -405,7 +423,9 @@ module.exports = {
 
         assert.typeOf ( args, 'array' );
 
-        assert.deepEqual ( args, [a, b] );
+        // assert.deepEqual ( args, [a, b] );
+        assert.deepEqual ( args[0], a );
+        assert.deepEqual ( args[1], b );
 
         assert.deepEqual ( args.strings(), [] );
 

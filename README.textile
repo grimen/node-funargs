@@ -52,6 +52,11 @@ h2. Test
 </pre>
 
 
+h2. References
+
+* "Subclass.js":https://gist.github.com/xk/1321777 by "xk":https://github.com/xk
+
+
 h2. License
 
 Released under the MIT license.
