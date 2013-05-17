@@ -18,6 +18,13 @@ module.exports = {
       }
     },
 
+    '#booleans': {
+      '()': function() {
+        assert.property ( args, 'booleans' );
+        assert.typeOf ( args.booleans, 'function' );
+      }
+    },
+
     '#numbers': {
       '()': function() {
         assert.property ( args, 'numbers' );
@@ -70,12 +77,14 @@ module.exports = {
 
   'No argument(s)': {
     'function() arguments should be and Array: []': function() {
-      var f = function() {
+      var fun = function() {
         var args = funargs(arguments);
 
         assert.typeOf ( args, 'array' );
-        assert.deepEqual ( args, [] );
+        assert.deepEqual ( args[0], undefined );
       }
+
+      fun ();
     }
   },
 
@@ -88,6 +97,8 @@ module.exports = {
 
         // assert.deepEqual ( args, [undefined] );
         assert.deepEqual ( args[0], undefined );
+
+        assert.deepEqual ( args.booleans(), [] );
 
         assert.deepEqual ( args.strings(), [] );
 
@@ -114,6 +125,8 @@ module.exports = {
         // assert.deepEqual ( args, [null] );
         assert.deepEqual ( args[0], null );
 
+        assert.deepEqual ( args.booleans(), [] );
+
         assert.deepEqual ( args.strings(), [] );
 
         assert.deepEqual ( args.numbers(), [] );
@@ -130,6 +143,60 @@ module.exports = {
       fun (null);
     },
 
+    'function(null) arguments should be an Array: [true]': function() {
+      var fun = function() {
+        var args = funargs(arguments);
+
+        assert.typeOf ( args, 'array' );
+
+        // assert.deepEqual ( args, [true] );
+        assert.deepEqual ( args[0], true );
+
+        assert.deepEqual ( args.booleans(), [true] );
+
+        assert.deepEqual ( args.strings(), [] );
+
+        assert.deepEqual ( args.numbers(), [] );
+
+        assert.deepEqual ( args.objects(), [] );
+
+        assert.deepEqual ( args.arrays(), [] );
+
+        assert.deepEqual ( args.functions(), [] );
+
+        assert.deepEqual ( args.inspect(), "[ true ]" );
+      }
+
+      fun (true);
+    },
+
+    'function(null) arguments should be an Array: [false]': function() {
+      var fun = function() {
+        var args = funargs(arguments);
+
+        assert.typeOf ( args, 'array' );
+
+        // assert.deepEqual ( args, [false] );
+        assert.deepEqual ( args[0], false );
+
+        assert.deepEqual ( args.booleans(), [false] );
+
+        assert.deepEqual ( args.strings(), [] );
+
+        assert.deepEqual ( args.numbers(), [] );
+
+        assert.deepEqual ( args.objects(), [] );
+
+        assert.deepEqual ( args.arrays(), [] );
+
+        assert.deepEqual ( args.functions(), [] );
+
+        assert.deepEqual ( args.inspect(), "[ false ]" );
+      }
+
+      fun (false);
+    },
+
     'function("fun") arguments should be an Array: ["fun"]': function() {
       var fun = function() {
         var args = funargs(arguments);
@@ -138,6 +205,8 @@ module.exports = {
 
         // assert.deepEqual ( args, ["fun"] );
         assert.deepEqual ( args[0], "fun" );
+
+        assert.deepEqual ( args.booleans(), [] );
 
         assert.deepEqual ( args.strings(), ["fun"] );
 
@@ -164,6 +233,8 @@ module.exports = {
         // assert.deepEqual ( args, [1337] );
         assert.deepEqual ( args[0], 1337 );
 
+        assert.deepEqual ( args.booleans(), [] );
+
         assert.deepEqual ( args.strings(), [] );
 
         assert.deepEqual ( args.numbers(), [1337] );
@@ -189,6 +260,8 @@ module.exports = {
         // assert.deepEqual ( args, [{fun: "args"}] );
         assert.deepEqual ( args[0], {fun: "args"} );
 
+        assert.deepEqual ( args.booleans(), [] );
+
         assert.deepEqual ( args.strings(), [] );
 
         assert.deepEqual ( args.numbers(), [] );
@@ -212,6 +285,8 @@ module.exports = {
         assert.typeOf ( args, 'array' );
 
         assert.deepEqual ( args[0], ["fun"] );
+
+        assert.deepEqual ( args.booleans(), [] );
 
         assert.deepEqual ( args.strings(), [] );
 
@@ -239,6 +314,8 @@ module.exports = {
 
         // assert.deepEqual ( args, [a] );
         assert.deepEqual ( args[0], a );
+
+        assert.deepEqual ( args.booleans(), [] );
 
         assert.deepEqual ( args.strings(), [] );
 
@@ -268,6 +345,8 @@ module.exports = {
         assert.deepEqual ( args[0], undefined );
         assert.deepEqual ( args[1], undefined );
 
+        assert.deepEqual ( args.booleans(), [] );
+
         assert.deepEqual ( args.strings(), [] );
 
         assert.deepEqual ( args.numbers(), [] );
@@ -293,6 +372,8 @@ module.exports = {
         // assert.deepEqual ( args, [null, null] );
         assert.deepEqual ( args[0], null );
         assert.deepEqual ( args[1], null );
+
+        assert.deepEqual ( args.booleans(), [] );
 
         assert.deepEqual ( args.strings(), [] );
 
@@ -320,6 +401,8 @@ module.exports = {
         assert.deepEqual ( args[0], "fun" );
         assert.deepEqual ( args[1], "args" );
 
+        assert.deepEqual ( args.booleans(), [] );
+
         assert.deepEqual ( args.strings(), ["fun", "args"] );
 
         assert.deepEqual ( args.numbers(), [] );
@@ -345,6 +428,8 @@ module.exports = {
         // assert.deepEqual ( args, [13, 37] );
         assert.deepEqual ( args[0], 13 );
         assert.deepEqual ( args[1], 37 );
+
+        assert.deepEqual ( args.booleans(), [] );
 
         assert.deepEqual ( args.strings(), [] );
 
@@ -372,6 +457,8 @@ module.exports = {
         assert.deepEqual ( args[0], {fun: "args"} );
         assert.deepEqual ( args[1], {args: "fun"} );
 
+        assert.deepEqual ( args.booleans(), [] );
+
         assert.deepEqual ( args.strings(), [] );
 
         assert.deepEqual ( args.numbers(), [] );
@@ -397,6 +484,8 @@ module.exports = {
         // assert.deepEqual ( args, [["fun", "args"], ["args", "fun"]] );
         assert.deepEqual ( args[0], ["fun", "args"] );
         assert.deepEqual ( args[1], ["args", "fun"] );
+
+        assert.deepEqual ( args.booleans(), [] );
 
         assert.deepEqual ( args.strings(), [] );
 
@@ -426,6 +515,8 @@ module.exports = {
         // assert.deepEqual ( args, [a, b] );
         assert.deepEqual ( args[0], a );
         assert.deepEqual ( args[1], b );
+
+        assert.deepEqual ( args.booleans(), [] );
 
         assert.deepEqual ( args.strings(), [] );
 

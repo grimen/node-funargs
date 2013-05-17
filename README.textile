@@ -23,6 +23,7 @@ h2. Usage
     return [
       Array.isArray(args),
       args,
+      args.booleans(),
       args.strings(),
       args.numbers(),
       args.objects(),
@@ -33,7 +34,7 @@ h2. Usage
 
   // ...and a call.
 
-  funnier_args("Why", null, "must", ["arguments", "be"], 1, {hell: "of"}, "a...", function() { return "pain"; });
+  funnier_args("Why", null, "must", ["arguments", "be"], 1, {hell: "of"}, "a...", function() { return "pain"; }, true);
 </pre>
 
 
@@ -42,13 +43,13 @@ h2. Test
 *Suite:*
 
 <pre>
-  $ npm test
+  $ make test
 </pre>
 
 *Examples:*
 
 <pre>
-  $ npm run-script example
+  $ make example
 </pre>
 
 

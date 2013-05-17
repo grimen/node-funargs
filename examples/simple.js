@@ -27,6 +27,7 @@ function funnier_args() {
   puts("");
 
   // =)
+  puts("fun_arguments.booleans(): ", fun_arguments.booleans());
   puts("fun_arguments.strings(): ", fun_arguments.strings());
   puts("fun_arguments.numbers(): ", fun_arguments.numbers());
   puts("fun_arguments.objects(): ", fun_arguments.objects());
@@ -41,4 +42,4 @@ function funnier_args() {
 }
 
 // ...and a call.
-funnier_args("Why", null, "must", ["arguments", "be"], 1, {hell: "of"}, "a...", function() { return "pain"; });
+funnier_args("Why", null, "must", ["arguments", "be"], 1, {hell: "of"}, "a...", function() { return "pain"; }, false);
